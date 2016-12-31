@@ -1,25 +1,34 @@
 package domein;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Gebouw {
+@NamedQuery(name = "Gebouw.findAll", query = "SELECT g FROM Gebouw g")
+public class Gebouw implements Serializable {
 
     @Id
     private String naam;
     private int capaciteit;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private final List<Dier> dieren = new ArrayList<>();
 
     public Gebouw(String naam, int capaciteit) {
         this.naam = naam;
         this.capaciteit = capaciteit;
+    }
+
+    protected Gebouw() {
     }
 
     public String getNaam() {
@@ -36,6 +45,10 @@ public class Gebouw {
 
     public List<Dier> getDieren() {
         return dieren;
+    }
+
+    public void addDier(Dier dier) {
+        this.dieren.add(dier);
     }
 
     @Override

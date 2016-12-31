@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 public class Verzorger implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nummer;
     private String naam;
 
@@ -23,6 +22,9 @@ public class Verzorger implements Serializable {
     public Verzorger(int nummer, String naam) {
         this.nummer = nummer;
         this.naam = naam;
+    }
+
+    protected Verzorger() {
     }
 
     public int getNummer() {

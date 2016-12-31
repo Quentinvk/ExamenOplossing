@@ -12,11 +12,14 @@ import javax.persistence.Persistence;
  * @author Heidi
  */
 public class JPAUtil {
-    private final static EntityManagerFactory entityManagerFactory =
-                            Persistence.createEntityManagerFactory("Ex_OOP3_1516_herexPU");
+
+    private final static EntityManagerFactory entityManagerFactory
+            = Persistence.createEntityManagerFactory("zoo");
+
     public static EntityManagerFactory getEntityManagerFactory() {
         return entityManagerFactory;
     }
+
     private JPAUtil() {
     }
 }

@@ -86,7 +86,7 @@ public class Zoo {
 
         return mapje.entrySet()
                 .stream()
-                .map(e -> e.getKey() + " " + e.getValue())
+                .map(e -> e.getKey() + " => " + e.getValue())
                 .collect(Collectors.joining("\n"));
     }
 }

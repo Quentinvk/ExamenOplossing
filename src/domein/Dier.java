@@ -1,27 +1,30 @@
 package domein;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import util.JPAUtil;
 
 @Entity
-@Table(name = "Dier")
-@NamedQuery(name = "Dieren.soortNamen", query = "SELECT e FROM Dieren e WHERE e.soort := soort ORDER BY e.gewicht DESC")
+@NamedQuery(name = "Dier.findAll", query = "SELECT d FROM Dier d")
+//@NamedQuery(name = "Dieren.soortNamen", query = "SELECT e FROM Dier WHERE e.soort := soort ORDER BY e.gewicht DESC")
 public class Dier implements Serializable {
 
+    // TypedQuery<Dier> q
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nummer;
 
     private String naam;
     private double gewicht;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Soort soort;
 
     public Dier(int nummer, String naam, double gewicht, Soort soort) {
@@ -29,6 +32,9 @@ public class Dier implements Serializable {
         this.naam = naam;
         this.gewicht = gewicht;
         this.soort = soort;
+    }
+
+    protected Dier() {
     }
 
     public int getNummer() {
