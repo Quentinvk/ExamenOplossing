@@ -57,9 +57,9 @@ public class Applicatie_JPA {
 
         entityManager.persist(reptielen);
         entityManager.persist(vogels);
+
         entityManager.persist(dylan);
         entityManager.persist(brent);
-
         entityManager.getTransaction().commit();
         entityManager.close();
         JPAUtil.getEntityManagerFactory().close();

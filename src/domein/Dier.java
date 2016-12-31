@@ -19,6 +19,7 @@ public class Dier implements Serializable {
 
     // TypedQuery<Dier> q
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nummer;
 
     private String naam;

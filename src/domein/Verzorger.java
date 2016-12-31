@@ -3,20 +3,24 @@ package domein;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Verzorger implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nummer;
     private String naam;
 
-    @ManyToOne
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private final List<Dier> dieren = new ArrayList<>();
 
     public Verzorger(int nummer, String naam) {
