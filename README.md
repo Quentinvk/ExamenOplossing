@@ -12,9 +12,9 @@ Vraag 2 : JPA (15 punten) DONE
 
 Vraag 2.2 : JPQL TODO
 
-Vraag 3 : ListView - Generics (20 punten) TODO
+Vraag 3 : ListView - Generics (20 punten) DONE
 
-Vraag 4 : Netwerken/Multithreading/Generics (30 punten) TODO
+Vraag 4 : Netwerken/Multithreading/Generics (30 punten) DONE
 
 
 Opgave(pdf) zit in de root folder.
