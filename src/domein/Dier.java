@@ -7,14 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import util.JPAUtil;
 
 @Entity
-@NamedQuery(name = "Dier.findAll", query = "SELECT d FROM Dier d")
-//@NamedQuery(name = "Dieren.soortNamen", query = "SELECT e FROM Dier WHERE e.soort := soort ORDER BY e.gewicht DESC")
+
+@NamedQuery(name = "Dier.geefAndere", query = "SELECT d FROM Dier d WHERE d.soort = :soort ORDER BY d.gewicht ASC")
 public class Dier implements Serializable {
 
     // TypedQuery<Dier> q

@@ -82,6 +82,7 @@ public class QueryPanelController extends GridPane {
         showValue(verzoek.getResultaat());
     }
 
+    @FXML
     public void doeQuery() {
         initConnection();
         spinner.setVisible(true);
