@@ -33,15 +33,21 @@ public class Zoo {
      * opgegeven naam. Geeft 0 terug indien er geen gebouw is met deze naam.
      */
     public double geefGemiddeldeGewichtVanDierenInGebouwMetNaam(String gebouwNaam) {
-        return gebouwen.stream()
-                .filter(gebouw -> gebouw.getNaam() == gebouwNaam)
-                .findFirst()
-                .get()
-                .getDieren()
-                .stream()
-                .mapToDouble(e -> e.getGewicht())
-                .average()
-                .getAsDouble();
+        double resultaat = 0;
+        try {
+            resultaat = gebouwen.stream()
+                    .filter(e -> e.getNaam().equals(gebouwNaam))
+                    .findFirst()
+                    .get()
+                    .getDieren()
+                    .stream()
+                    .mapToDouble(e -> e.getGewicht())
+                    .average()
+                    .getAsDouble();
+        } catch (NoSuchElementException e) {
+            System.out.println("Er is geen gebouw met naam "+gebouwNaam);
+        }
+        return resultaat;
     }
 
     /*
