@@ -55,13 +55,19 @@ public class Zoo {
      * nummer. Geeft een lege lijst terug indien er geen verzorger is met dit nummer.
      */
     public List<String> geefNamenVanDierenVanVerzorgerMetNummer(int verzorgerNummer) {
-        return verzorgers.stream()
+        List<String> lijst = new ArrayList<>();
+        try{
+            lijst = verzorgers.stream()
                 .filter(e -> e.getNummer() == verzorgerNummer)
                 .findFirst()
                 .get()
                 .getDieren()
                 .stream()
                 .map(dier -> dier.getNaam()).collect(Collectors.toList());
+        }catch (NoSuchElementException e) {
+            System.out.println("Er is geen verzorger met nummer" + verzorgerNummer);
+        }
+        return lijst;
     }
 
 //    /*
