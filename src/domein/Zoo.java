@@ -25,6 +25,7 @@ public class Zoo {
     public List<Dier> geefDierenVanSoortMetNaam(String soortNaam) {
         return dieren.stream()
                 .filter(e -> e.getSoort().toString().equals(soortNaam))
+                .sorted(Comparator.comparing(Dier::getGewicht))
                 .collect(Collectors.toList());
     }
 
