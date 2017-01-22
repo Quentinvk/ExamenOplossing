@@ -26,7 +26,7 @@ public class Dier implements Serializable {
     private String naam;
     private double gewicht;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Soort soort;
 
     public Dier(int nummer, String naam, double gewicht, Soort soort) {
